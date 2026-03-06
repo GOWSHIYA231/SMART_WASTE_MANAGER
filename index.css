@@ -1,0 +1,85 @@
+# ♻️ EcoVision: Smart Waste Segregation Classifier
+
+EcoVision is an AI-powered smart waste segregation web application built designed to tackle modern waste management challenges. Built specifically for hackathons and educational purposes, it uses in-browser machine learning to identify waste items via webcam or image upload, and categorizes them to suggest proper disposal methods.
+
+It also features an interactive **Play & Learn** mini-game designed to teach students and users how to correctly sort everyday waste into Biodegradable, Recyclable, and Hazardous bins.
+
+---
+
+## 🚀 Features
+
+- **📸 Real-Time AI Scanning:** Uses your device's webcam to capture frames and analyze objects instantly.
+- **🖼️ Image Upload:** Allows users to manually drag and drop or upload images (JPG/PNG) for classification.
+- **🧠 In-Browser Machine Learning:** Utilizes TensorFlow.js and MobileNet to perform image classification entirely on the client side, ensuring privacy and fast processing without the need for a backend server.
+- **📊 Detailed Analytics:** Provides actionable feedback upon classification, including:
+  - **What To Do:** Instructions on which bin to use (Compost, Recycling, E-Waste, Landfill).
+  - **Recycle Time:** Estimated decomposition or recycling timeframes.
+  - **Management Strategy:** High-level environmental impact and handling tips.
+- **🎮 Play & Learn Mini-Game:** An integrated gamified experience that quizzes users on proper waste sorting, providing instant educational feedback and score tracking.
+- **✨ Premium UI/UX:** A stunning, fully responsive "Glassmorphism" dark-mode design with smooth animations and glowing accents.
+
+---
+
+## 🛠️ Technology Stack
+
+- **Frontend Framework:** React.js
+- **Build Tool:** Vite
+- **Machine Learning:** TensorFlow.js (`@tensorflow/tfjs`)
+- **Pre-trained Model:** MobileNet (`@tensorflow-models/mobilenet`)
+- **Styling:** Custom Vanilla CSS with CSS Variables and Animations
+- **Icons:** Lucide React (`lucide-react`)
+- **Camera Integration:** React Webcam (`react-webcam`)
+
+---
+
+## 💻 Getting Started (Local Development)
+
+Follow these steps to run the application on your local machine:
+
+### Prerequisites
+Make sure you have [Node.js](https://nodejs.org/) installed on your computer.
+
+### 1. Installation
+Unzip the project folder, open your terminal, navigate to the directory, and install the required dependencies:
+
+```bash
+npm install
+```
+
+### 2. Run the Development Server
+Start the local Vite development server:
+
+```bash
+npm run dev
+```
+
+### 3. Open in Browser
+Once the server is running, open your browser and navigate to:
+**[http://localhost:5173](http://localhost:5173)**
+
+*Note: When using the "Use Camera" feature, your browser will prompt you for camera access. Please click "Allow" to enable live scanning.*
+
+---
+
+## 🏗️ How the AI Works
+
+1. **Model Loading:** When the app loads, it fetches the lightweight **MobileNet v2** model via TensorFlow.js.
+2. **Capture:** The user provides an image (via webcam screenshot or file upload).
+3. **Classification:** The model analyzes the image and returns a list of probable objects (e.g., "water bottle", "desk", "banana").
+4. **Categorization Strategy:** The app intercepts this prediction and uses a predefined keyword-matching algorithm to map the detected object to one of four categories:
+   - **Biodegradable** (food, plants, wood)
+   - **Recyclable** (plastics, glass, paper, metals)
+   - **Hazardous / E-Waste** (batteries, electronics, medical)
+   - **Unknown / General** (items not recognized as specific waste)
+
+---
+
+## 📦 Building for Production
+
+To create a production-ready build of the application:
+
+```bash
+npm run build
+```
+
+This will generate a `dist` folder containing minified and optimized static files that can be easily deployed to hosting platforms like Vercel, Netlify, or GitHub Pages.
